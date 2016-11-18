@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AutoCatchVedio
@@ -13,13 +6,20 @@ namespace AutoCatchVedio
     public partial class Form1 : Form
     {
         private string URL;
-        private int RemainingTime = 5;
+        private int RemainingTime = 180;
         private int Start = 0;
         public Form1()
         {
             InitializeComponent();
-            timer1.Stop();//計時開始
-            timer2.Stop();//下載
+            System.Diagnostics.Process process = new System.Diagnostics.Process();
+            process.StartInfo.FileName = "RunDll32.exe";
+            process.StartInfo.Arguments = "InetCpl.cpl,ClearMyTracksByProcess 255";
+            process.StartInfo.UseShellExecute = false;
+            process.StartInfo.RedirectStandardInput = true;
+            process.StartInfo.RedirectStandardOutput = true;
+            process.StartInfo.RedirectStandardError = true;
+            process.StartInfo.CreateNoWindow = true;
+            process.Start();
         }
 
         private void StartButton_Click(object sender, EventArgs e)
@@ -27,15 +27,14 @@ namespace AutoCatchVedio
             URL = textBox1.Text;
             Start = int.Parse(textBox2.Text);
             label8.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm ss ");
-            timer1.Start();//計時開始
-            timer1.Interval = 1050;
+            timer1.Start();//計時開始           
             timer2.Start();//下載
-            timer2.Interval = 2000;
             StartButton.Enabled = false;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {//倒數的
+            timer1.Interval = 1050;
             label5.Text = (RemainingTime--).ToString()+" s";
             label10.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm ss ");
             if (RemainingTime == 0)
@@ -43,6 +42,7 @@ namespace AutoCatchVedio
         }
         private void timer2_Tick(object sender, EventArgs e)
         {
+            timer2.Interval = 180000;
             if (Start <= int.Parse(textBox3.Text))
             {
                 if (Start != int.Parse(textBox2.Text))
