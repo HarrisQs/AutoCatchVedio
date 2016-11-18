@@ -35,7 +35,7 @@ namespace AutoCatchVedio
         }
 
         private void timer1_Tick(object sender, EventArgs e)
-        {
+        {//倒數的
             label5.Text = (RemainingTime--).ToString()+" s";
             label10.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm ss ");
             if (RemainingTime == 0)
@@ -51,17 +51,18 @@ namespace AutoCatchVedio
                 this.GoalWeb.Url = new Uri(URL);
                 Start++;
             }
-            else
+            else//下載完成
             {
                 timer1.Stop();//計時開始
                 timer2.Stop();//下載
+                MessageBox.Show("下載完成摟!");
             }
         }
 
         private void StopButton_Click(object sender, EventArgs e)
         {
             if (StopButton.Text == "暫停下載")
-            {
+            {//暫停下載
                 timer1.Stop();//計時開始
                 timer2.Stop();//下載
                 StopButton.Text = "重新開始";
