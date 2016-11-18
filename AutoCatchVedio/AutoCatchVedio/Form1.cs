@@ -74,5 +74,6 @@ namespace AutoCatchVedio
                 StopButton.Text = "暫停下載";
             }
         }
+
     }
 }

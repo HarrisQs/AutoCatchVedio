@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.GoalWeb = new System.Windows.Forms.WebBrowser();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -52,11 +53,11 @@
             // 
             // GoalWeb
             // 
-            this.GoalWeb.Location = new System.Drawing.Point(403, -2);
+            this.GoalWeb.Location = new System.Drawing.Point(383, 3);
             this.GoalWeb.MinimumSize = new System.Drawing.Size(20, 20);
             this.GoalWeb.Name = "GoalWeb";
             this.GoalWeb.ScriptErrorsSuppressed = true;
-            this.GoalWeb.Size = new System.Drawing.Size(908, 818);
+            this.GoalWeb.Size = new System.Drawing.Size(685, 553);
             this.GoalWeb.TabIndex = 0;
             // 
             // textBox1
@@ -224,7 +225,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1276, 813);
+            this.ClientSize = new System.Drawing.Size(1069, 555);
+            this.Controls.Add(this.GoalWeb);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label8);
@@ -241,7 +243,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.GoalWeb);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "CatchVedio";
             this.ResumeLayout(false);
