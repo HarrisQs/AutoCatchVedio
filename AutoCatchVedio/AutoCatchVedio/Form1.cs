@@ -29,6 +29,7 @@ namespace AutoCatchVedio
             label8.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm ss ");
             timer1.Start();//計時開始           
             timer2.Start();//下載
+            timer3.Start();
             StartButton.Enabled = false;
         }
 
@@ -75,5 +76,17 @@ namespace AutoCatchVedio
             }
         }
 
+        private void timer3_Tick(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process process = new System.Diagnostics.Process();
+            process.StartInfo.FileName = "RunDll32.exe";
+            process.StartInfo.Arguments = "InetCpl.cpl,ClearMyTracksByProcess 255";
+            process.StartInfo.UseShellExecute = false;
+            process.StartInfo.RedirectStandardInput = true;
+            process.StartInfo.RedirectStandardOutput = true;
+            process.StartInfo.RedirectStandardError = true;
+            process.StartInfo.CreateNoWindow = true;
+            process.Start();
+        }
     }
 }
