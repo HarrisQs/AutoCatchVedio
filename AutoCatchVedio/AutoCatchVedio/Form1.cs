@@ -6,7 +6,7 @@ namespace AutoCatchVedio
     public partial class Form1 : Form
     {
         private string URL;
-        private int RemainingTime = 180;
+        private int RemainingTime = 90;
         private int Start = 0;
         public Form1()
         {
@@ -39,11 +39,11 @@ namespace AutoCatchVedio
             label5.Text = (RemainingTime--).ToString()+" s";
             label10.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm ss ");
             if (RemainingTime == 0)
-                RemainingTime = 180;
+                RemainingTime = 90;
         }
         private void timer2_Tick(object sender, EventArgs e)
         {
-            timer2.Interval = 180000;
+            timer2.Interval = 90000;
             if (Start <= int.Parse(textBox3.Text))
             {
                 if (Start != int.Parse(textBox2.Text))
